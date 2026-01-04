@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discord Community
+    url: https://discord.gg/u9XfHZN8K9
+    about: Join our Discord server for community support and discussions
+  - name: Security Vulnerability
+    url: https://github.com/nayandas69/supporthub/security/advisories/new
+    about: Report security vulnerabilities privately

@@ -1,0 +1,34 @@
+{
+  "name": "supporthub",
+  "version": "1.0.0",
+  "description": "Support Hub - A Discord Ticket Support System Bot for managing customer support tickets.",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "ticket-system",
+    "support",
+    "supabase",
+    "discord.js"
+  ],
+  "author": "nayandas69",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nayandas69/supporthub.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.16.3",
+    "dotenv": "^16.4.7",
+    "chalk": "^5.3.0",
+    "@supabase/supabase-js": "^2.47.10"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

@@ -1,0 +1,61 @@
+# Docker Compose configuration for SupportHub Discord Bot
+# Includes Supabase integration and health monitoring
+# Usage: docker-compose up -d
+
+version: '3.8'
+
+services:
+  supporthub:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    
+    container_name: supporthub-bot
+    restart: unless-stopped
+    
+    # Load environment variables from .env file
+    env_file:
+      - .env
+    
+    environment:
+      # Override or add additional environment variables here
+      - NODE_ENV=production
+      - PORT=3000
+    
+    # Expose health check endpoint
+    ports:
+      - "3000:3000"
+    
+    # Health monitoring configuration
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Resource limits (adjust based on server capacity)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
+    
+    # Logging configuration for production
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    
+    # Network configuration
+    networks:
+      - supporthub-network
+
+# Define custom network for isolation
+networks:
+  supporthub-network:
+    driver: bridge
